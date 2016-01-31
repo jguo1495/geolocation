@@ -1,9 +1,6 @@
 /**
  * Created by Junjie on 25/01/2016.
  */
-/**
- * Created by Eric.G on 13/01/2016.
- */
 
 var app = new Vue({
     el: 'body',
