@@ -7,8 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Auth;
+
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function  showUserMap(){
 
         return view('map');
@@ -46,4 +53,6 @@ class HomeController extends Controller
 
         return response()->json(['latitude' => -37.764152, 'longitude' => 145.008062]);
     }
+
+
 }

@@ -1,7 +1,6 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="publishable-key" content="{{config('services.stripe.key')}}">
     <title>Google Map Javascript API Test</title>
     @yield("header")
 </head>

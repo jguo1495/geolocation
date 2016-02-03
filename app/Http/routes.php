@@ -14,18 +14,43 @@
 Route::get('/', function () {
     return view('welcome');
 });
-//basic Google Map
-Route::get('map', 'HomeController@showUserMap');
+
+
+
+
+Route::group(['middleware' => 'web'], function () {
+
+    //show login page
+    Route::get('login', function () {
+        return view('auth.login');
+    });
+
+    //hande login
+    Route::post('login','PageController@handleLogin');
+
+    //handle logout
+    Route::get('logout', 'PageController@handleLogout');
+
+    //basic Google Map
+    Route::get('map', 'HomeController@showUserMap');
 //Google Map wth dynamic address
-Route::get('map2', 'HomeController@showUserMap2');
+    Route::get('map2', 'HomeController@showUserMap2');
 //Googlee Map with search box
-Route::get('map3', 'HomeController@showUserMap3');
+    Route::get('map3', 'HomeController@showUserMap3');
 //Google Map with multi markers
-Route::get('map4', 'HomeController@showUserMap4');
-Route::get('map-component', 'HomeController@showUserMapComponent');
-Route::get('vue-test', 'HomeController@showVue');
-Route::get('json', 'HomeController@showJsonPage');
-Route::post('geo-data', 'HomeController@handleGeodata');
+    Route::get('map4', 'HomeController@showUserMap4');
+    Route::get('map-component', 'HomeController@showUserMapComponent');
+    Route::get('vue-test', 'HomeController@showVue');
+    Route::get('json', 'HomeController@showJsonPage');
+    Route::post('geo-data', 'HomeController@handleGeodata');
+});
+
+
+
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
 
 /*
 |--------------------------------------------------------------------------
